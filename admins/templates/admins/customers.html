@@ -1,0 +1,39 @@
+{% extends 'admins/adminsHome.html' %}
+{% load static %}
+{% block content %}
+
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Customer</th>
+					<th>Email</th>
+                    <th>IC No</th>
+				</tr>
+
+				{% for patient in patients %}
+					<tr>
+
+						<td>{{patient.name}}</td>
+						<td>{{patient.email}}</td>
+                        <td>{{patient.IC_no}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	
+
+</div>
+
+
+
+{% endblock %}

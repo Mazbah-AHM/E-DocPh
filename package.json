@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chart.js": "^3.5.0",
+    "zingchart": "^2.9.6"
+  }
+}

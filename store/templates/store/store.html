@@ -1,0 +1,133 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+{% for product in products %}
+<li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6 ">
+	<div class="item-inner">
+		<div class="item-img">
+			<div class="item-img-info"><a href="{% url 'productdetail' product.id %}" class="product-image"><img
+						src="{{product.imageURL}}" alt=" image "></a>
+			</div>
+			<div class="add_cart">
+				<button data-product="{{product.id}}" data-action="add"
+					class="button btn-cart add-btn update-cart" >
+					<i class="fa fa-plus"></i>
+					</button>
+			</div>
+
+		</div>
+		<div class="item-info">
+			<div class="info-inner">
+				<div class="item-title"><a href="{% url 'productdetail' product.id %}">{{product.name}} </a> </div>
+				<div class="item-content">
+					<div class="item-price">
+						<div class="price-box"><span class="regular-price"><span class="price">RM
+									{{product.price}}</span> </span> </div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</li>
+
+
+
+{% endfor %}
+
+
+<div class="toolbar bottom">
+	<div class="display-product-option">
+		<div class="pages">
+			<!-- <label>Page:</label> -->
+			<ul class="pagination">
+				
+				
+				<!-- <li><a href="javascript:void(0);">«</a></li> -->
+				{% if products.has_previous %}
+				<li><a href="{% url 'store' %}?page={{products.previous_page_number}}">«</a></li>
+				{% endif %}
+				{% if products.has_next %}
+				<li><a href="{% url 'store' %}?page={{products.next_page_number}}">»</a></li>
+				{% endif %}
+				<!-- <li><a href="javascript:void(0);">2</a></li> -->
+				<!-- <li><a href="javascript:void(0);">3</a></li> -->
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+
+
+
+
+{% endblock content %}
+<!-- 
+<div class="row">
+	{% for product in products %}
+	<div class="col-lg-4">
+		<img class="thumbnail" src="{{product.imageURL}}">
+		<div class="box-element product">
+			<h6><strong>{{product.name}}</strong></h6>
+			<hr>
+
+			<button data-product="{{product.id}}" data-action="add"
+				class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+
+			<a class="btn btn-outline-success" href="{% url 'productdetail' product.id %}">View</a>
+			<h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+
+		</div>
+	</div>
+	{% endfor %}
+</div> -->
+
+<!-- <div class="toolbar bottom">
+	<div class="display-product-option">
+		<div class="pages">
+			<label>Page:</label>
+			<ul class="pagination">
+				
+				<li><a href="javascript:void(0);">«</a></li>
+				<li class="active"><a href="javascript:void(0);">1</a></li>
+				<li><a href="javascript:void(0);">2</a></li>
+				<li><a href="javascript:void(0);">3</a></li>
+				<li><a href="javascript:void(0);">»</a></li>
+			</ul>
+		</div>
+		<div class="product-option-right">
+			<div class="sort-by">
+				<label class="left">Sort By: </label>
+				<ul>
+					<li><a href="javascript:void(0);">Position<span
+								class="right-arrow"></span></a>
+						<ul>
+							<li><a href="javascript:void(0);">Name</a></li>
+							<li><a href="javascript:void(0);">Price</a></li>
+							<li><a href="javascript:void(0);">Position</a></li>
+						</ul>
+					</li>
+				</ul>
+				<a class="button-asc left" href="javascript:void(0);"
+					title="Set Descending Direction"><span class="top_arrow"></span></a>
+			</div>
+			<div class="pager">
+				<div class="limiter">
+					<label>View: </label>
+					<ul>
+						<li><a href="javascript:void(0);">15<span
+									class="right-arrow"></span></a>
+							<ul>
+								<li><a href="javascript:void(0);">20</a></li>
+								<li><a href="javascript:void(0);">30</a></li>
+								<li><a href="javascript:void(0);">35</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->

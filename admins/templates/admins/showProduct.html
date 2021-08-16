@@ -1,0 +1,50 @@
+{% extends 'admins/adminsHome.html' %}
+{% block content %}
+
+<div class="main-content-inner">
+
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h4><strong>Product List</strong></h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>tags</th>
+                    </tr>
+
+                    {% for i in productlist %}
+                    <tr>
+                        <td>{{i.name }}</td>
+                        <td>{{i.Brand}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.price }}</td>
+                        <td>{{i.image}}</td>
+                        <td>{{i.description}}</td>
+                        <td>{{i.tags }}</td>
+
+
+                        <td>
+                            <a class="btn btn-sm btn-info" href="/updateproduct/{{ i.id }}"><span
+                                    class="glyphicon glyphicon-pencil">Edit</span></a>
+                            <a class="btn btn-sm btn-danger" href="/deleteproduct/{{ i.id }}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

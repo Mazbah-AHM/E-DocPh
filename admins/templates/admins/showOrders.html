@@ -1,0 +1,50 @@
+{% extends 'admins/adminsHome.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content-inner">
+
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h4><strong>Order List</strong></h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Patient</th>
+                        <th>Date Ordered</th>
+                        <th>Complete</th>
+                        <th>Transaction ID</th>
+                        <th>Authorized</th>
+                    </tr>
+
+                    {% for i in patientlist %}
+                    <tr>
+                        <td>{{i.patient }}</td>
+                        <td>{{i.date_ordered}}</td>
+                        {% if i.complete == False %}
+                        <td>
+                            <a class="btn btn-sm btn-info"
+                                href="/completed/{{ i.id }}/approved"><span>Completed</span></a>
+                        </td>
+                        {% else %}
+                        <td>{{i.complete}}</td>
+                        {% endif %}
+                        <td>{{i.transaction_id }}</td>
+                        <td>{{i.authorize}}</td>
+
+
+
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

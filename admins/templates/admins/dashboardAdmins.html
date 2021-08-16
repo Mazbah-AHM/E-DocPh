@@ -1,0 +1,83 @@
+{% extends 'admins/adminsHome.html' %}
+{% load static %}
+{% block content %}
+
+
+<br>
+
+<div class="panel-body">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="metric">
+				<span class="icon"><i class="fa fa-shopping-bag"></i></span>
+				<p>
+					<span class="number">{{order_count}}</span>
+					<span class="title">Total Orders</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="metric">
+				<span class="icon"><i class="fa fa-eye"></i></span>
+				<p>
+					<span class="number">{{pending}}</span>
+					<span class="title">Pending</span>
+				</p>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="metric">
+				<span class="icon"><i class="fa fa-download"></i></span>
+				<p>
+					<span class="number">{{delivered}}</span>
+					<span class="title">Delivered</span>
+				</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+<br>
+<br>
+<br>
+<div class="col-md-12">
+	<!-- TABLE HOVER -->
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="panel-title">Last 10 Orders</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+
+						<th>Patient Name</th>
+						<th>Date Ordered</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+
+				{% for i in orders %}
+
+				<tbody>
+					<tr>
+						<td>{{i.patient.username}}</td>
+						<td>{{i.date_ordered}}</td>
+						<td>{{i.nameChange}}</td>
+					</tr>
+
+				</tbody>
+
+				{% endfor %}
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- END TABLE HOVER -->
+
+</div>
+
+
+{% endblock %}

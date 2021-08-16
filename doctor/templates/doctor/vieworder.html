@@ -1,0 +1,86 @@
+{% extends 'doctor/doctorMain.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="main-content-inner">
+
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h4><strong>Order Data</strong></h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Date</th>
+                        <th>Product Name</th>
+                        <th>Product Image</th>
+                    </tr>
+
+                    {% for i in product %}
+                    <tr>
+                        <td>{{i.order.patient.first_name }}</td>
+                        <td>{{i.order.date_ordered}}</td>
+                        <td>{{i.product.name}}</td>
+
+                        <td>
+                            <div class="cart-row">
+                                <div style="flex:2"><img class="row-image" src="{{i.product.imageURL}}"></div>
+                            </div>
+                        </td>
+
+
+
+                    </tr>
+
+                    {% endfor %}
+                </table>
+                <table class="table">
+                    <tr>
+                        <th>Prescription</th>
+                    </tr>
+                    <tr>
+                        <td>
+                           
+
+                            <div class="cart-row">
+                                <div style="flex:5"><img class="prescription" src="{{products.prescripImageURL}}"></div>
+                            </div>
+                       
+                        </td>
+                    </tr>
+                </table>
+
+                {% if products.authorize == "Pending" %}
+
+
+
+                <td>
+
+                    <a class="btn btn-sm btn-info"
+                        href="/doctorapproval/{{ products.id }}/approved"><span>Accept</span></a>
+                    <a class="btn btn-sm btn-danger"
+                        href="/doctorapproval/{{ products.id }}/rejected"><span>Reject</span></a>
+
+                </td>
+
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

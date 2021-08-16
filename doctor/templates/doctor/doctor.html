@@ -1,0 +1,56 @@
+{% extends 'doctor/doctorMain.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="main-content-inner">
+
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h4><strong>Order List</strong></h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Patient Surname</th>
+                        <th>Patient Email</th>
+                        <th>Date</th>
+                    </tr>
+
+
+                    {% for i in orderdata %}
+                        
+                        <tr>
+                            <td>{{i.patient.first_name }}</td>
+                            <td>{{i.patient.last_name }}</td>
+                            <td>{{i.patient.email }}</td>
+                            <td>{{i.date_ordered}}</td>
+
+                            <td>
+                                <a class="btn btn-sm btn-info" href="/vieworder/{{ i.id }}"><span>View</span></a>
+                            </td>
+
+                        </tr>
+                       
+
+                    {% endfor %}
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

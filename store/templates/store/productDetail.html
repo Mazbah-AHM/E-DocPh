@@ -1,0 +1,137 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<main class="container my-4">
+	{% for i in products %}
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">{{i.name}}</h3>
+	<div class="row">
+		<!-- Images -->
+		<div class="col-md-4">
+			<img id="zoom_01" style=" height:350px; width:350px; " data-zoom-image="{{i.imageURL}}" src="{{i.imageURL}}"
+				class="card-img-top" alt="{{i.name}}">
+		</div>
+		<div class="col-md-8">
+			<p>{{i.description}}</p>
+			<hr />
+			<table class="table table-bordered">
+				<tr>
+					<th>Price</th>
+					<th>RM <span class="product-price-{{product.id}}">{{i.price}}</span></th>
+				</tr>
+			</table>
+			<hr />
+			<div class="input-group my-3" style="width:30%;">
+
+				<div class="input-group-append">
+					<input type="hidden" class="product-image-{{i.id}}" value="{{i.imageURL}}" />
+					<input type="hidden" class="product-id-{{i.id}}" value="{{i.id}}" />
+					<input type="hidden" class="product-title-{{i.id}}" value="{{i.name}}" />
+					<button data-product="{{i.id}}" data-action="add"
+						class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="row">
+		<div class="col-md-6">
+			<h3 class="my-3">Detail</h3>
+			<!-- Detail -->
+			<table class="table table-bordered">
+				<tr>
+					<th>Brand</th>
+					<td>{{i.Brand}}</td>
+				</tr>
+				<tr>
+					<th>Category</th>
+					<td>{{i.tags}}</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<br>
+		<br>
+		<!-- Reviews -->
+		<!-- <div class="col-md-6">
+			<h3 class="my-3">Reviews - 4.5/5 <i class="fa fa-star text-warning"></i></h3>
+			<div class="card">
+				<div class="card-body" style="max-height: 400px; overflow: auto;">
+					<!-- Detail -->
+		<!-- <blockquote class="blockquote text-right">
+					  <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</small>
+					  <footer class="blockquote-footer">User 
+					  	<cite title="Source Title">
+					  		<i class="fa fa-star text-warning"></i>
+					  		<i class="fa fa-star text-warning"></i>
+					  		<i class="fa fa-star text-warning"></i>
+					  		<i class="fa fa-star text-warning"></i>
+					  	</cite>
+					  </footer>
+					</blockquote>
+					<hr />
+				</div>
+			</div>
+		</div> -->
+		<!-- </div> -->
+		<!-- Related Products -->
+		<!-- <h3 class="mt-4 mb-3 border-bottom pb-1">Related Products</h3>
+		<div class="row">
+			{% for product in related %}
+			<div class="col-lg-3 col-sm-4 mb-4">
+				<div class="card shadow">
+					<a href="{{i.tags}}">
+						<img style = "width:350px;height: 350px ; padding:10 px;" src="{{product.imageURL}}" class="card-img-top"
+							alt="{{product.name}}"></a>
+					<div class="card-body">
+						<h6 class="card-text"><a href="{{product.id}}">{{product.name}}</a>
+						</h6>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-sm btn-primary"><i class="fa fa-shopping-cart"></i></button>
+						<span class="float-right">
+							4.5/5
+							<i class="fa fa-star text-warning"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+			{% endfor %}
+		</div> -->
+		<div class="row">
+			{% for product in related %}
+			<div class="col-lg-4">
+				<img class="thumbnail" src="{{product.imageURL}}">
+				<div class="box-element product">
+					<h6><strong>{{product.name}}</strong></h6>
+					<hr>
+	
+					<button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+					
+					<a class="btn btn-outline-success" href="{% url 'productdetail' product.id %}">View</a>
+					<h4 style="display: inline-block; float: right"><strong>${{product.price}}</strong></h4>
+	
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endfor %}
+</main>
+<!-- Image Zoom -->
+<script src="{% static 'jquery.ez-plus.js' %}"></script>
+<script type="text/javascript">
+	$('#zoom_01').ezPlus();
+</script>
+
+<!-- Add To Cart -->
+<script src="{% static 'custom.js' %}"></script>
+
+{% endblock %}

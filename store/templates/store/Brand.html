@@ -1,0 +1,64 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+{% for product in prod %}
+<li class="item col-lg-4 col-md-3 col-sm-4 col-xs-6 ">
+	<div class="item-inner">
+		<div class="item-img">
+			<div class="item-img-info"><a href="{% url 'productdetail' product.id %}" class="product-image"><img
+						src="{{product.imageURL}}" alt=" image "></a>
+			</div>
+			<div class="add_cart">
+				<button data-product="{{product.id}}" data-action="add"
+					class="button btn-cart add-btn update-cart" >
+					<i class="fa fa-plus"></i>
+					</button>
+			</div>
+
+		</div>
+		<div class="item-info">
+			<div class="info-inner">
+				<div class="item-title"><a href="{% url 'productdetail' product.id %}">{{product.name}} </a> </div>
+				<div class="item-content">
+					<div class="item-price">
+						<div class="price-box"><span class="regular-price"><span class="price">RM
+									{{product.price}}</span> </span> </div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</li>
+
+
+
+{% endfor %}
+
+
+<!-- <div class="toolbar bottom">
+	<div class="display-product-option">
+		<div class="pages">
+			
+			<ul class="pagination">
+				
+			
+				{% if products.has_previous %}
+				<li><a href="{% url 'brand' %}?page={{products.previous_page_number}}">«</a></li>
+				{% endif %}
+				{% if products.has_next %}
+				<li><a href="{% url 'brand' %}?page={{products.next_page_number}}">»</a></li>
+				{% endif %}
+		
+			</ul>
+		</div>
+		
+	</div>
+</div> -->
+
+
+
+
+
+{% endblock content %}
