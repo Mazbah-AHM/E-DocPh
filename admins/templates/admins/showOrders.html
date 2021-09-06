@@ -2,16 +2,15 @@
 {% load static %}
 {% block content %}
 
-<div class="main-content-inner">
-
-
-    <div class="row">
-        <div class="col-md">
-            <div class="card card-body">
-                <h4><strong>Order List</strong></h4>
-            </div>
-            <div class="card card-body">
-                <table class="table">
+<div class="col-md-12">
+    <!-- TABLE HOVER -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Last 10 Orders</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
                     <tr>
                         <th>Patient</th>
                         <th>Date Ordered</th>
@@ -19,8 +18,10 @@
                         <th>Transaction ID</th>
                         <th>Authorized</th>
                     </tr>
+                </thead>
 
-                    {% for i in patientlist %}
+                {% for i in patientlist %}
+                <tbody>
                     <tr>
                         <td>{{i.patient }}</td>
                         <td>{{i.date_ordered}}</td>
@@ -38,12 +39,13 @@
 
 
                     </tr>
-                    {% endfor %}
+                </tbody>
+                {% endfor %}
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
+</div>
 
 </div>
 

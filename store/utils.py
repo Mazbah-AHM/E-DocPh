@@ -72,7 +72,7 @@ def guestOrder(request, data):
 	cookieData = cookieCart(request)
 	items = cookieData['items']
 
-	customer, created = Patient.objects.get_or_create(email=email,)
+	customer, created = User.objects.get_or_create(email=email,)
 	customer.name = name
 	customer.save()
 

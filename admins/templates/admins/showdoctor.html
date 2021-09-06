@@ -3,44 +3,41 @@
 {% block content %}
 
 
-<div class="main-content-inner">
-    <div class="row">
-
-        <div class="col-12 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="header-title">Doctor Data List</h4>
-                    <div class="data-tables">
-                        <table id="dataTable" class="text-center table">
-                            <thead class="bg-light text-capitalize">
-                                <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-
-                            </thead>
-                            <tbody>
-                                {% for i in doctorlist %}
-                                <tr>
-                                    <td>{{i.first_name }}</td>
-                                    <td>{{i.last_name }}</td>
-                                    <td>{{i.username }}</td>
-                                    <td>{{i.email}}</td>
-
-                                </tr>
-                                {% endfor %}
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+<div class="col-md-12">
+    <!-- TABLE HOVER -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Doctors</h3>
         </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
 
+                </thead>
+
+                {% for i in doctorlist %}
+                <tbody>
+                    <tr>
+                        <td>{{i.first_name }}</td>
+                        <td>{{i.last_name }}</td>
+                        <td>{{i.username }}</td>
+                        <td>{{i.email}}</td>
+
+                    </tr>
+                </tbody>
+                {% endfor %}
+
+
+            </table>
+        </div>
     </div>
-
 </div>
+
 {% endblock %}
 
 <!-- 

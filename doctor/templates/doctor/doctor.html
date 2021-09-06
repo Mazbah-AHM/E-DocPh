@@ -22,9 +22,9 @@
                         <th>Date</th>
                     </tr>
 
+                    {% if order.null != True %}
+                        {% for i in orderdata %}
 
-                    {% for i in orderdata %}
-                        
                         <tr>
                             <td>{{i.patient.first_name }}</td>
                             <td>{{i.patient.last_name }}</td>
@@ -36,9 +36,10 @@
                             </td>
 
                         </tr>
-                       
 
-                    {% endfor %}
+
+                        {% endfor %}
+                    {% endif %}
 
 
                 </table>

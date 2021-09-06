@@ -36,6 +36,7 @@ class m_Product(models.Model):
         if br == br:
             self.quantity += self.quantity
         return self.quantity
+
           
 
  
@@ -145,7 +146,7 @@ class OrderItem(models.Model):
     	return total
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Patient, on_delete=models.SET_NULL, null=True)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     order= models.ForeignKey(Prescription, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=200, null=False)
     city = models.CharField(max_length=200, null=False)

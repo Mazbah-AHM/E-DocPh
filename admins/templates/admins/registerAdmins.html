@@ -14,10 +14,11 @@
 	<link rel="stylesheet" href="{% static 'vendor/linearicons/style.css' %}">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	
+
 </head>
 
 <body>
@@ -29,31 +30,44 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{% static 'img/signature (2).png' %}" alt=""></div>
-								<p class="lead">Register your account</p>
+								<div class="logo text-center"><img src="{% static 'img/signature (2).png' %}" alt="">
+								</div>
+								<p>Rgister your account here</p>
 							</div>
-							<form class="form-auth-small" method = "POST" action="/register/">
-                                {% csrf_token %}
+							<form class="form-auth-small" method="POST" action="/register/">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">First Name</label>
+									<input type="text" class="form-control" name="first_name" value=""
+										placeholder="First Name">
+								</div>
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Sur Name</label>
+									<input type="text" class="form-control" name="last_name" value=""
+										placeholder="Surname">
+								</div>
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="text" class="form-control" name="email" value="" placeholder="Email">
 								</div>
-                                <div class="form-group">
-									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input type="text" class="form-control" name="username" value="" placeholder="Username">
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Username</label>
+									<input type="text" class="form-control" name="username" value=""
+										placeholder="Username">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" name="password1" value="" placeholder="Password">
+									<input type="password" class="form-control" name="password1" value=""
+										placeholder="Password">
 								</div>
-                                <div class="form-group">
+								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" name="password2" value="" placeholder="Password">
+									<input type="password" class="form-control" name="password2" value=""
+										placeholder=" Confirm Password">
 								</div>
+
 								<button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="{% url 'login' %}">Already Have an account?</a></span>
-								</div>
+
 							</form>
 						</div>
 					</div>
@@ -61,6 +75,47 @@
 						<div class="overlay"></div>
 						<div class="content text">
 							<h1 class="heading">Click on Register to sign up!</h1>
+							<div class="bottom">
+								<span class="helper-text"><i class="fa fa-lock"></i> <a style='color:white;'
+										href="{% url 'login' %}">Already Have an account?</a></span>
+							</div>
+							<br>
+							{% if form.errors %}
+							<div class="alert1">
+								<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+								{{form.errors}}
+							</div>
+
+							<style>
+								.alert {
+									opacity: 1;
+									transition: opacity 0.6s;
+									/* 600ms to fade out */
+								}
+							</style>
+
+							<script>
+								// Get all elements with class="closebtn"
+								var close = document.getElementsByClassName("closebtn");
+								var i;
+
+								// Loop through all close buttons
+								for (i = 0; i < close.length; i++) {
+									// When someone clicks on a close button
+									close[i].onclick = function () {
+
+										// Get the parent of <span class="closebtn"> (<div class="alert">)
+										var div = this.parentElement;
+
+										// Set the opacity of div to 0 (transparent)
+										div.style.opacity = "0";
+
+										// Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+										setTimeout(function () { div.style.display = "none"; }, 600);
+									}
+								}
+							</script>
+							{% endif %}
 						</div>
 					</div>
 					<div class="clearfix"></div>

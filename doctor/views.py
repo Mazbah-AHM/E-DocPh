@@ -37,9 +37,12 @@ def Doctors(request):
 
     orderdata = Prescription.objects.all().filter(authorize = 'Pending')
 
+    data = Prescription.objects.all().values("precripImage")
+    print(data)
+
     print(orderdata)
 
-    context = {'orderlist': showorders, 'orderdata':orderdata}
+    context = {'orderlist': showorders, 'orderdata':orderdata, 'data':data}
     return render(request, 'doctor/doctor.html', context)
 
 @login_required(login_url='logindoctor')
@@ -114,31 +117,27 @@ def Approval(request, pres_id, a_id):
 
 
 def registration_view(request):
-    """
-      Renders Registration Form
-    """
-    context = {}
+
+
+    form = CreateUserForm
     if request.POST:
         form = CreateUserForm(request.POST)
         if form.is_valid():
             print(form)
             user = form.save()
+            username = form.cleaned_data.get('username')
 
             group = Group.objects.get(name='doctor')
             user.groups.add(group)
+
+            messages.success(request, 'Account successfully created for ' + username)
 
             form.save()
             
     
             return redirect('doctor')
-        else:
-            print('msdjkvnsd')
-            messages.error(request, "Please Correct Below Errors")
-            context['registration_form'] = form
-    else:
-        print('hjhj')
-        form = CreateUserForm()
-        context['registration_form'] = form
+        
+    context = {'form':form}
     return render(request, "doctor/registerDoctor.html", context)
 
 

@@ -447,9 +447,56 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
   z-index: 1;
+  background-image: url("img/doctorImage.jpg");
+  background-size: cover;
+  
+}
+
+#hero .icon-box1 {
+  padding: 50px 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(18, 66, 101, 0.08);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+  background-image: url("img/admin.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  
+}
+
+#hero .icon-box2 {
+  padding: 50px 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(18, 66, 101, 0.08);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+  background-image: url("img/patient.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
 }
 
 #hero .icon-box .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+#hero .icon-box1 .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+#hero .icon-box2 .title {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
@@ -460,11 +507,36 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
+#hero .icon-box1 .title a {
+  color: #124265;
+  transition: 0.3s;
+}
+
+#hero .icon-box2 .title a {
+  color: #124265;
+  transition: 0.3s;
+}
+
+
 #hero .icon-box .description {
   font-size: 15px;
   line-height: 28px;
   margin-bottom: 0;
 }
+
+
+#hero .icon-box1 .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+#hero .icon-box2 .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
 
 #hero .icon-box .icon {
   margin-bottom: 20px;
@@ -476,13 +548,63 @@ h1, h2, h3, h4, h5, h6 {
   color: #2487ce;
 }
 
+#hero .icon-box1 .icon {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  font-size: 36px;
+  line-height: 1;
+  color: #2487ce;
+}
+
+#hero .icon-box2 .icon {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  font-size: 36px;
+  line-height: 1;
+  color: #2487ce;
+}
+
+#hero .icon-box .img {
+  margin-bottom: 20px;
+  padding-top: 10px;
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  font-size: 36px;
+  line-height: 1;
+  color: #2487ce;
+
+}
+
 #hero .icon-box:hover {
   transform: scale(1.08);
 }
 
+#hero .icon-box1:hover {
+  transform: scale(1.08);
+}
+
+#hero .icon-box2:hover {
+  transform: scale(1.08);
+}
+
+
 #hero .icon-box:hover .title a {
   color: #2487ce;
 }
+
+#hero .icon-box1:hover .title a {
+  color: #2487ce;
+}
+
+#hero .icon-box2:hover .title a {
+  color: #2487ce;
+}
+
 
 @media (min-width: 1024px) {
   #hero {

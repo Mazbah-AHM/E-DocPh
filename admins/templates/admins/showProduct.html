@@ -1,16 +1,61 @@
 {% extends 'admins/adminsHome.html' %}
 {% block content %}
 
-<div class="main-content-inner">
 
 
-    <div class="row">
-        <div class="col-md">
-            <div class="card card-body">
-                <h4><strong>Product List</strong></h4>
-            </div>
-            <div class="card card-body">
-                <table class="table">
+<div class="col-md-12">
+    {% if messages %}
+    <div class="alert alert-warning">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {% for message in messages %}
+        <p id='message'>{{message}}</p>
+        {% endfor %}
+    </div>
+
+    <style>
+        .alert {
+            opacity: 1;
+            transition: opacity 0.6s;
+            /* 600ms to fade out */
+        }
+    </style>
+
+    <script>
+        // Get all elements with class="closebtn"
+        var close = document.getElementsByClassName("closebtn");
+        var i;
+
+        // Loop through all close buttons
+        for (i = 0; i < close.length; i++) {
+            // When someone clicks on a close button
+            close[i].onclick = function () {
+
+                // Get the parent of <span class="closebtn"> (<div class="alert">)
+                var div = this.parentElement;
+
+                // Set the opacity of div to 0 (transparent)
+                div.style.opacity = "0";
+
+                // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+                setTimeout(function () { div.style.display = "none"; }, 600);
+            }
+        }
+    </script>
+    {% endif %}
+
+
+    <!-- TABLE HOVER -->
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">Products</h3>
+
+            <!-- {% for message in messages %}
+            <p id='message'>{{message}}</p>
+            {% endfor %} -->
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
                     <tr>
                         <th>Name</th>
                         <th>Brand</th>
@@ -20,31 +65,37 @@
                         <th>Description</th>
                         <th>tags</th>
                     </tr>
+                </thead>
 
-                    {% for i in productlist %}
+                {% for i in productlist %}
+                <tbody>
                     <tr>
                         <td>{{i.name }}</td>
                         <td>{{i.Brand}}</td>
                         <td>{{i.quantity}}</td>
                         <td>{{i.price }}</td>
-                        <td>{{i.image}}</td>
+                        <td>
+                            <div class="cart-row">
+                                <div style="flex:2"><img class="row-image" src="{{i.imageURL}}"></div>
+                            </div>
+                        </td>
                         <td>{{i.description}}</td>
                         <td>{{i.tags }}</td>
 
 
                         <td>
                             <a class="btn btn-sm btn-info" href="/updateproduct/{{ i.id }}"><span
-                                    class="glyphicon glyphicon-pencil">Edit</span></a>
+                                    class="glyphicon glyphicon-pencil">Edit</span></a><br><br>
+
                             <a class="btn btn-sm btn-danger" href="/deleteproduct/{{ i.id }}">Delete</a>
                         </td>
                     </tr>
-                    {% endfor %}
+                </tbody>
+                {% endfor %}
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-
 </div>
 
 {% endblock %}

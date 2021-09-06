@@ -27,9 +27,12 @@ def RegistrationPage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data.get('username')
 
             group = Group.objects.get(name='patient')
             user.groups.add(group)
+
+            messages.success(request, 'Account successfully created for ' + username)
 
             return redirect('loginpatient')
     context = {'form': form}
@@ -148,6 +151,9 @@ def Brand(request, id):
 @allowed_users(allowed_roles=['patient'])
 def shop(request):
 
+    data = ShippingAddress.objects.all().values('customer')
+    print(data)
+
     data = cartData(request)
 
     cartItems = data['cartItems']
@@ -163,7 +169,7 @@ def shop(request):
 
     prod = m_Product.objects.all().filter(Brand = id).values('name')
 
-    print(prod)
+
    
 
     # print('unique', barbosa)
@@ -213,6 +219,11 @@ def cart(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/cart.html', context)
+
+def OrderComplete(request):
+
+    context = {}
+    return render(request, 'store/thankyouPage.html',context)    
 
 @login_required(login_url='loginpatient')
 @allowed_users(allowed_roles=['patient'])
